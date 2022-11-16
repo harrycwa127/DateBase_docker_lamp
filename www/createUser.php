@@ -2,6 +2,10 @@
 
 require_once '_route.php';
 
+function alert($msg) {
+    echo "<script type='text/javascript'>alert('$msg');</script>";
+}
+
 if (array_key_exists('is_logged', $_SESSION)) {
     header('Location: main.php');
     exit;
@@ -19,11 +23,11 @@ if ($_POST && isset($_POST['submit'])) {
 
         //Missing required fields
         if (_is_valid($username) === FALSE || _is_valid($password) === FALSE || _is_valid($passconf) === FALSE)
-            _log_error('Missing required fields');
+            alert('Missing required fields');
 
         //Passwords did not match
         if ($password != $passconf) {
-            _log_error('The passwords is not the same.');
+            alert('The passwords is not the same.');
         }
 
         //search username in db
@@ -35,7 +39,7 @@ if ($_POST && isset($_POST['submit'])) {
 
         //if same username found 
         if ($num > 0)
-            _log_error("Sorry, the username '{$username}' is already in use. <a href=\"createUser.php\">Go back</a>.</p>");
+            alert("Sorry, the username '{$username}' is already in use. <a href=\"createUser.php\">Go back</a>.</p>");
 
         //insert to db
         try {

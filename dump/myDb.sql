@@ -22,3 +22,78 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`user_id`, `user_name`,`user_password`) VALUES
 (1,'test','$2y$10$9phx9WxnXL2yDJ.Z5Ygaze5a9AiVSu1blMy/kBbh2og.1Z/rNCYx.'),
 (2,'User1','$2y$10$PARfzpp1B5HFPvC2gsr8cuIwTfZi6xuAEXTiJPHv7I2mqe0D1QhOe');
+
+
+
+-- Sample table and data
+    -- Create bookorder table
+	
+CREATE TABLE bookorder(
+    Order_Number INT NOT NULL,
+    Cus_ID INT,
+    Mailing_Address VARCHAR(500),
+    Credit_Card_Number VARCHAR(16),
+    Shipment_Method VARCHAR(50),
+    Shipping_Date DATE,
+    Date_and_Time_of_Order DATETIME,
+    ISBN VARCHAR(17),
+    Price DECIMAL(7, 2),
+    Purchase_Price DECIMAL(7, 2),
+    Quantity_Purchased INT,
+    Shipping_Cost DECIMAL(7, 2),
+    Tax DECIMAL(7, 2),
+    PRIMARY KEY(Order_Number)
+) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+-- Create customer table
+CREATE TABLE customer(
+    Fname VARCHAR(50),
+    MI VARCHAR(50),
+    Lname VARCHAR(50),
+    Cus_ID INT NOT NULL,
+    Address VARCHAR(500),
+    Credit_Card_Number VARCHAR(16),
+    Expiration_Date DATE,
+    PhoneNumber VARCHAR(20),
+    E_mail VARCHAR(50),
+    PRIMARY KEY(Cus_ID)
+) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+-- Create book table
+CREATE TABLE book(
+    Title VARCHAR(200),
+    ISBN VARCHAR(17) NOT NULL,
+    PRIMARY KEY(ISBN),
+    Pub_ID INT,
+    Edition INT,
+    Date_of_Publication DATE,
+    Price DECIMAL(7, 2),
+    Book_Description VARCHAR(1000),
+    Quantity INT,
+    Category_Code INT
+) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+-- Create publisher table
+CREATE TABLE publisher(
+    NAME VARCHAR(100),
+    Pub_ID INT NOT NULL,
+    Address VARCHAR(500),
+    PRIMARY KEY(Pub_ID)
+) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+-- Create category table
+CREATE TABLE category(
+    Category_Code INT NOT NULL,
+    Category_Description VARCHAR(1000),
+    Sub_Category_Code INT,
+    PRIMARY KEY(Category_Code)
+) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+-- Create author table
+CREATE TABLE author(
+    Fname VARCHAR(50) NOT NULL,
+    MI VARCHAR(50) NOT NULL,
+    Lname VARCHAR(50) NOT NULL,
+    ISBN VARCHAR(17) NOT NULL,
+    Title VARCHAR(200)
+) ENGINE = InnoDB DEFAULT CHARSET = latin1;

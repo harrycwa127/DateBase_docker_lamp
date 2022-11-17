@@ -18,10 +18,10 @@ if ($_POST && isset($_POST['submit'])) {
 
         //Check if field is empty
         if (_is_valid($username) === FALSE)
-            _log_error('Username is empty. Please login again.');
+            _log_error('Username is empty. Please <a href="login.php">login again</a>.');
 
         if (_is_valid($password) === FALSE)
-            _log_error('Password is empty. Please login again.');
+            _log_error('Password is empty. Please <a href="login.php">login again</a>.');
 
         //Check username and password
         $stmt = $db->prepare('SELECT * FROM `users` WHERE `user_name` = :username LIMIT 1');
@@ -30,7 +30,7 @@ if ($_POST && isset($_POST['submit'])) {
         $num = $db->query('SELECT FOUND_ROWS()')->fetchColumn();
 
         if ($num == 0)
-            _log_error('Incorrect username or password. Please login again.');
+            _log_error('Incorrect username or password. Please <a href="login.php">login again</a>.');
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();

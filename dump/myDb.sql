@@ -26,7 +26,8 @@ INSERT INTO `users` (`user_id`, `user_name`,`user_password`) VALUES
 
 
 -- Sample table and data
-    -- Create bookorder table
+
+-- Create bookorder table
 	
 CREATE TABLE bookorder(
     Order_Number INT NOT NULL,
@@ -44,6 +45,12 @@ CREATE TABLE bookorder(
     Tax DECIMAL(7, 2),
     PRIMARY KEY(Order_Number)
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+INSERT INTO `bookorder` (`Order_Number`, `Cus_ID`, `Mailing_Address`, `Credit_Card_Number`, `Shipment_Method`, `Shipping_Date`, `Date_and_Time_of_Order`, `ISBN`, `Price`, `Purchase_Price`, `Quantity_Purchased`, `Shipping_Cost`, `Tax`) 
+VALUES (1,001, 'John@gmail.com', '1111222233334444', 'ground', '2022-01-01', '2022-01-01 00:00:00', '1234567891234', 100, 120, 1, 30,5),
+(2,003, 'Marc@gmail.com', '2222333344445555', 'ground', '2022-05-02', '2022-05-02 00:00:00', '5378295647392', 90, 110, 1, 30,5),
+(3,003, 'William@gmail.com', '3333444455556666', 'ground', '2022-04-26', '2022-04-26 00:00:00', '7264820174832', 80, 100, 1, 30,4);
+
 
 -- Create customer table
 CREATE TABLE customer(

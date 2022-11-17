@@ -16,3 +16,9 @@ if (!function_exists('_log_error')) {
         // die($msg);
     }
 }
+
+if (!function_exists('_password_hash')) {
+    function _password_hash($password){
+        return hash('sha256',$password);
+    }
+}

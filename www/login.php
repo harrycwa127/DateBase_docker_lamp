@@ -35,7 +35,7 @@ if ($_POST && isset($_POST['submit'])) {
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 
-        if (_password_hash($password) != $row['user_password'])
+        if (password_verify($password, $row['user_password'] === FALSE))
             _log_error('Incorrect username or password. Please login again.');
 
         //Put the data to cookie when login success

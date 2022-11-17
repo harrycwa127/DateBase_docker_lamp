@@ -40,7 +40,7 @@ if ($_POST && isset($_POST['submit'])) {
         //insert to db
         try {
             $stmt = $db->prepare('INSERT INTO `users` (`user_name`, `user_password`) VALUES (:username, :password)');
-            $stmt->execute(array(':username' => $username, ':password' => _password_hash($password)));      # orginal: password_hash($password, PASSWORD_BCRYPT)
+            $stmt->execute(array(':username' => $username, ':password' => _password_hash($password)));
             $stmt->closeCursor();
         } catch (PDOException $e) {
             $stmt->closeCursor();

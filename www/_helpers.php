@@ -12,8 +12,8 @@ if (!function_exists('_is_valid')) {
 //error logging
 if (!function_exists('_log_error')) {
     function _log_error($msg){
-        echo "<script type='text/javascript'>alert('$msg');</script>";
-        // die($msg);
+        error_log($msg);
+        die($msg);
     }
 }
 

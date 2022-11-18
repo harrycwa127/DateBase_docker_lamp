@@ -33,7 +33,8 @@ if ($_POST && isset($_POST['submit'])) {
         $specialChars = preg_match('@[^\w]@', $password);
 
         if (!$upper || !$lower || !$number || !$specialChars || strlen($password) < 8) {
-            _log_error('The passwords should be at least 8 characters in length and one upper case letter, one number, and one special character.');
+            _log_error("The passwords should be at least 8 characters in length and one upper case letter, one number, and one special character.
+            <p><a href='\createUser.php\'>Return to create user</a></p>");
         }
 
         //search username in db
@@ -44,9 +45,10 @@ if ($_POST && isset($_POST['submit'])) {
         $num = $db->query('SELECT FOUND_ROWS()')->fetchColumn();
 
         //if same username found 
-        if ($num > 0)
+        if ($num > 0) {
             _log_error("Sorry, the username '{$username}' is already in use. <a href=\"createUser.php\">Go back</a>.</p>");
-
+        }
+           
         //insert to db
         try {
             $stmt = $db->prepare('INSERT INTO `users` (`user_name`, `user_password`) VALUES (:username, :password)');

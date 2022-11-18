@@ -49,7 +49,7 @@ if ($_POST && isset($_POST['submit'])) {
         if ($num > 0) {
             _log_error("Sorry, the username '{$username}' is already in use. <a href=\"createUser.php\">Go back</a>.</p>");
         }
-           
+
         //insert to db
         try {
             $stmt = $db->prepare('INSERT INTO `users` (`user_name`, `user_password`) VALUES (:username, :password)');
@@ -118,8 +118,10 @@ if ($_POST && isset($_POST['submit'])) {
             <tr>
                 <td>
                     <?php
-                    if ($_POST && !empty($_POST['submit'])) {
-                        if (empty($_POST['g-recaptcha-response'])) {
+                    //If not submit
+                    if ($_POST && isset($_POST['submit'])) {
+                        //If do not complete recaptcha
+                        if (!(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response']))) {
                             echo "<h1>Please complete recaptcha</h1>";
                         }
                     }
@@ -131,13 +133,13 @@ if ($_POST && isset($_POST['submit'])) {
                     <div class="g-recaptcha" data-sitekey="6LeHnAwjAAAAAOfDR6yzz6VoLnPeOTnx4jQWZzpn"></div>
                 </td>
             </tr>
-            
+
             <tr>
                 <th colspan=2>
                     <input type="submit" name="submit" value="Register">
                 </th>
             </tr>
-            
+
         </table>
     </form>
 </body>

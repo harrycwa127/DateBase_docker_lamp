@@ -9,7 +9,7 @@ if (array_key_exists('is_logged', $_SESSION)) {
 
 // If the form has been submitted
 if ($_POST && isset($_POST['submit'])) {
-    
+
     //If complete recaptcha start complete 
     if (isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
         //Strip whitespace and filter removes tags
@@ -48,7 +48,7 @@ if ($_POST && isset($_POST['submit'])) {
         exit;
     } else {
         //If do not complete recaptcha
-        echo "<h1>Please complete recaptcha</h1>";
+        // echo "<h1>Please complete recaptcha</h1>";
     }
 }
 
@@ -100,6 +100,19 @@ if ($_POST && isset($_POST['submit'])) {
             <tr>
                 <td colspan="2" align="center">
                     <input type="submit" name="submit" value="Login">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <?php
+                    //If not submit
+                    if ($_POST && isset($_POST['submit'])) {
+                        //If do not complete recaptcha
+                        if (!(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response']))) {
+                            echo "<h1>Please complete recaptcha</h1>";
+                        }
+                    }
+                    ?>
                 </td>
             </tr>
         </table>

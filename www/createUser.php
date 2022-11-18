@@ -19,7 +19,8 @@ if ($_POST && isset($_POST['submit'])) {
 
         //Missing required fields
         if (_is_valid($username) === FALSE || _is_valid($password) === FALSE || _is_valid($passconf) === FALSE)
-            _log_error('Missing required fields');
+            _log_error("Missing required fields
+                <p><a href='\createUser.php\'>Return to create user</a></p>");
 
         //Passwords did not match
         if ($password != $passconf) {
@@ -64,7 +65,7 @@ if ($_POST && isset($_POST['submit'])) {
         echo "<p>Thank you, you have registered - you can <a href=\"login.php\">login</a> now.</p>";
     } else {
         //If do not complete recaptcha
-        echo "<h1>Please complete recaptcha</h1>";
+        // echo "<h1>Please complete recaptcha</h1>";
     }
 }
 
@@ -116,14 +117,27 @@ if ($_POST && isset($_POST['submit'])) {
             </tr>
             <tr>
                 <td>
+                    <?php
+                    if ($_POST && !empty($_POST['submit'])) {
+                        if (empty($_POST['g-recaptcha-response'])) {
+                            echo "<h1>Please complete recaptcha</h1>";
+                        }
+                    }
+                    ?>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <div class="g-recaptcha" data-sitekey="6LeHnAwjAAAAAOfDR6yzz6VoLnPeOTnx4jQWZzpn"></div>
                 </td>
             </tr>
+            
             <tr>
                 <th colspan=2>
                     <input type="submit" name="submit" value="Register">
                 </th>
             </tr>
+            
         </table>
     </form>
 </body>

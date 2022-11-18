@@ -105,3 +105,14 @@ CREATE TABLE author(
     Title VARCHAR(200)
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
+-- Create database users
+CREATE USER 
+    'read_data'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password',
+    'crud'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password',
+    'super'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password',
+    'login'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password';
+
+grant all privileges on *.* to 'super'@'localhost' with grant option;
+grant SELECT on myDb.* to 'read_data'@'localhost';
+grant SELECT on myDb.users to 'login'@'localhost';
+grant select, insert, update, delete on myDb.* to 'crud'@'localhost';

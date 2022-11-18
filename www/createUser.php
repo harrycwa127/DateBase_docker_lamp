@@ -26,6 +26,16 @@ if ($_POST && isset($_POST['submit'])) {
             _log_error('The passwords is not the same.');
         }
 
+        // Validate password strength and rule
+        $upper = preg_match('@[A-Z]@', $password);
+        $lower = preg_match('@[a-z]@', $password);
+        $number    = preg_match('@[0-9]@', $password);
+        $specialChars = preg_match('@[^\w]@', $password);
+
+        if (!$upper || !$lower || !$number || !$specialChars || strlen($password) < 8) {
+            _log_error('The passwords should be at least 8 characters in length and one upper case letter, one number, and one special character.');
+        }
+
         //search username in db
         $stmt = $db->prepare('SELECT `user_name` FROM `users` WHERE `user_name` = :username LIMIT 1');
         $stmt->execute(array(':username' => $username));

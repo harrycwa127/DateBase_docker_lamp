@@ -105,6 +105,3 @@ CREATE TABLE author(
     Title VARCHAR(200)
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
-
--- user privilege
-

@@ -112,6 +112,10 @@ CREATE USER
     'super'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password',
     'account'@'%' IDENTIFIED WITH mysql_native_password BY 'password'
     password expire interval 30 day password reuse interval 180 day;
+	
+	-- PREQUIRE X509 WITH MAX_QUERIES_PER_HOUR 60
+	
+	-- PASSWORD HISTORY 5
 
 grant all privileges on *.* to 'super'@'localhost' with grant option;
 grant SELECT on myDb.* to 'read_data'@'%';

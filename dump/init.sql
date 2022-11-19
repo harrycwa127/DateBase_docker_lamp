@@ -117,3 +117,5 @@ grant all privileges on *.* to 'super'@'localhost' with grant option;
 grant SELECT on myDb.* to 'read_data'@'localhost';
 grant SELECT on myDb.users to 'login'@'localhost';
 grant select, insert, update, delete on myDb.* to 'crud'@'localhost';
+
+DROP USER 'root'@'localhost';

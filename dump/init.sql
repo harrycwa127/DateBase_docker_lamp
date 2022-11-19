@@ -110,7 +110,8 @@ CREATE USER
     'read_data'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password',
     'crud'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password',
     'super'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password',
-    'login'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password';
+    'login'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password' 
+    password expire interval 30 day password reuse interval 180 day;
 
 grant all privileges on *.* to 'super'@'localhost' with grant option;
 grant SELECT on myDb.* to 'read_data'@'localhost';

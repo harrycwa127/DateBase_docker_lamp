@@ -32,7 +32,7 @@ if (array_key_exists('is_logged', $_SESSION) === FALSE) {
         <?php
         require_once '_route.php';
         // get column except Credit_Card_Number
-        $query = 'SELECT Order_Number, Cus_ID, Mailing_Address, Shipment_Method, Shipping_Date, Date_and_Time_of_Order, ISBN, Price, Purchase_Price, Quantity_Purchased, Shipping_Cost, Tax From bookorder';
+        $query = 'SELECT Order_Number, Cus_ID, Mailing_Address, Shipment_Method, Shipping_Date, Date_and_Time_of_Order, ISBN, Price, Purchase_Price, Quantity_Purchased, Shipping_Cost, Tax From bookorder WHERE Customer_ID =' . $_SESSION['userid'];
         $result = mysqli_query($conn, $query);
 
         echo '<table class="table table-striped">';

@@ -107,15 +107,17 @@ CREATE TABLE author(
 
 -- Create database users
 CREATE USER 
-    'read_data'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password',
-    'crud'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password',
-    'super'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password',
-    'login'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password' 
+    'read_data'@'%' IDENTIFIED WITH mysql_native_password BY 'password',
+    'crud'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password',
+    'super'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password',
+    'account'@'%' IDENTIFIED WITH mysql_native_password BY 'password'
+	WITH MAX_QUERIES_PER_HOUR 60 MAX_UPDATES_PER_HOUR 60 PASSWORD HISTORY 5
     password expire interval 30 day password reuse interval 180 day;
+	
 
 grant all privileges on *.* to 'super'@'localhost' with grant option;
-grant SELECT on myDb.* to 'read_data'@'localhost';
-grant SELECT on myDb.users to 'login'@'localhost';
+grant SELECT on myDb.* to 'read_data'@'%';
+grant select,insert on myDb.users to 'account'@'%';
 grant select, insert, update, delete on myDb.* to 'crud'@'localhost';
 
 DROP USER 'root'@'localhost';

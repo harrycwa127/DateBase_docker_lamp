@@ -3,8 +3,8 @@
 // connect to database config
 $dbhost    = 'db';
 $dbname    = 'myDb';
-$dbuser    = 'root';
-$dbpassword  = 'test';
+$dbuser    = 'account';
+$dbpassword  = 'password';
 
 try {
     $db = new PDO(

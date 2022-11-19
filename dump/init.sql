@@ -47,24 +47,31 @@ CREATE TABLE bookorder(
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 INSERT INTO `bookorder` (`Order_Number`, `Cus_ID`, `Mailing_Address`, `Credit_Card_Number`, `Shipment_Method`, `Shipping_Date`, `Date_and_Time_of_Order`, `ISBN`, `Price`, `Purchase_Price`, `Quantity_Purchased`, `Shipping_Cost`, `Tax`) 
-VALUES (1,001, 'John@gmail.com', '1111222233334444', 'ground', '2022-01-01', '2022-01-01 11:22:33', '1234567891234', 100, 120, 1, 30,5),
-(2,003, 'Marc@gmail.com', '2222333344445555', 'ground', '2022-05-02', '2022-05-02 16:01:50', '5378295647392', 90, 110, 1, 30,5),
-(3,003, 'William@gmail.com', '3333444455556666', 'ground', '2022-04-26', '2022-04-26 21:42:05', '7264820174832', 80, 100, 1, 30,4);
+VALUES (1, 1, 'John@gmail.com', '1111222233334444', 'ground', '2022-01-01', '2022-01-01 11:22:33', '1234567891234', 100, 120, 1, 30,5),
+(2, 2, 'Marc@gmail.com', '2222333344445555', 'ground', '2022-05-02', '2022-05-02 16:01:50', '5378295647392', 90, 110, 1, 30,5),
+(3, 2, 'William@gmail.com', '2222333344445555', 'ground', '2022-04-26', '2022-04-26 21:42:05', '7264820174832', 80, 100, 1, 30,4);
 
 
 -- Create customer table
 CREATE TABLE customer(
+    Cus_ID INT NOT NULL,
     Fname VARCHAR(50),
     MI VARCHAR(50),
     Lname VARCHAR(50),
-    Cus_ID INT NOT NULL,
     Address VARCHAR(500),
     Credit_Card_Number VARCHAR(16),
     Expiration_Date DATE,
     PhoneNumber VARCHAR(20),
     E_mail VARCHAR(50),
+    -- user_id INT,
+    FOREIGN KEY (Cus_ID) REFERENCES users(user_id),
     PRIMARY KEY(Cus_ID)
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+INSERT INTO `customer` (`Cus_ID`, `Fname`, `MI`, `Lname`, `Address`, `Credit_Card_Number`, `Expiration_Date`, `PhoneNumber`, `E_mail`) VALUES
+(1, "Jerry", "", "Ng", "Toilet", "1111222233334444", "2022-11-30", "12345678", "jerry@12345.com"),
+(2, "Kian", "", "Chan", "Home", "2222333344445555", "2022-11-30", "12345678", "kian@12345.com");
+
 
 -- Create book table
 CREATE TABLE book(

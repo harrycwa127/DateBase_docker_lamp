@@ -37,18 +37,27 @@ if (array_key_exists('is_logged', $_SESSION) === FALSE) {
 
         echo '<table class="table table-striped">';
         echo '<thead><tr><th></th><th>Order Number</th><th>Customer ID</th><th>Mail Address</th><th>Shipment Method</th><th>Shipping Date</th><th>Date and Time of Order</th><th>ISBN</th><th>Price</th><th>Purchase Price</th><th>Quantity Purchased</th><th>Shipping Cost</th><th>Tax</th></tr></thead>';
-        while ($value = $result->fetch_array(MYSQLI_ASSOC)) {
-            echo '<tr>';
-            echo '<td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>';
-
-            foreach ($value as $element) {
-                echo '<td>' . $element . '</td>';
+        if($value){
+            while ($value = $result->fetch_array(MYSQLI_ASSOC)) {
+                echo '<tr>';
+                echo '<td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>';
+    
+                foreach ($value as $element) {
+                    echo '<td>' . $element . '</td>';
+                }
+                echo '</tr>';
             }
-            echo '</tr>';
-        }
-        echo '</table>';
 
-        $result->close();
+            echo '</table>';
+
+            $result->close();
+        }else{
+            echo '</table>';
+
+            echo '<h2>Data no found!</h2>';
+        }
+        
+
 
         mysqli_close($conn);
 

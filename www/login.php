@@ -35,7 +35,7 @@ if ($_POST && isset($_POST['submit'])) {
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 
-        if (password_verify($password, $row['user_password'] === FALSE))
+        if (password_verify($password, $row['user_password']) === FALSE)
             _log_error('Incorrect username or password. Please login again.');
 
         //Put the data to cookie when login success
@@ -46,9 +46,6 @@ if ($_POST && isset($_POST['submit'])) {
         // redirect to index
         header('Location: index.php');
         exit;
-    } else {
-        //If do not complete recaptcha
-        // echo "<h1>Please complete recaptcha</h1>";
     }
 }
 

@@ -20,7 +20,7 @@ if ($_POST && isset($_POST['submit'])) {
         //Missing required fields
         if (_is_valid($username) === FALSE || _is_valid($password) === FALSE || _is_valid($passconf) === FALSE)
             _log_error("Missing required fields
-                <p><a href='\createUser.php\'>Return to create user</a></p>");
+                <p><a href='createUser.php'>Return to create user</a></p>");
 
         //Passwords did not match
         if ($password != $passconf) {
@@ -35,7 +35,7 @@ if ($_POST && isset($_POST['submit'])) {
 
         if (!$upper || !$lower || !$number || !$specialChars || strlen($password) < 8) {
             _log_error("The passwords should be at least 8 characters in length and one upper case letter, one number, and one special character.
-            <p><a href='\createUser.php\'>Return to create user</a></p>");
+            <p><a href='createUser.php'>Return to create user</a></p>");
         }
 
         //search username in db
@@ -47,7 +47,7 @@ if ($_POST && isset($_POST['submit'])) {
 
         //if same username found 
         if ($num > 0) {
-            _log_error("Sorry, the username '{$username}' is already in use. <a href=\"createUser.php\">Go back</a>.</p>");
+            _log_error("Sorry, the username '{$username}' is already in use. <a href='createUser.php'>Go back</a>.</p>");
         }
 
         //insert to db
@@ -62,7 +62,7 @@ if ($_POST && isset($_POST['submit'])) {
             error_log('Error: ' . $e->getMessage());
         }
         echo "<h1>Registered Account!</h1>";
-        echo "<p>Thank you, you have registered - you can <a href=\"login.php\">login</a> now.</p>";
+        echo "<p>Thank you, you have registered - you can <a href='login.php'>login</a> now.</p>";
     } else {
         //If do not complete recaptcha
         // echo "<h1>Please complete recaptcha</h1>";

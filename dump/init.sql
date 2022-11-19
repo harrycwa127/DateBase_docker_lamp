@@ -30,7 +30,7 @@ INSERT INTO `users` (`user_id`, `user_name`,`user_password`) VALUES
 -- Create bookorder table
 	
 CREATE TABLE bookorder(
-    Order_Number INT NOT NULL,
+    Order_Number INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Cus_ID INT,
     Mailing_Address VARCHAR(500),
     Credit_Card_Number VARCHAR(16),
@@ -42,14 +42,13 @@ CREATE TABLE bookorder(
     Purchase_Price DECIMAL(7, 2),
     Quantity_Purchased INT,
     Shipping_Cost DECIMAL(7, 2),
-    Tax DECIMAL(7, 2),
-    PRIMARY KEY(Order_Number)
+    Tax DECIMAL(7, 2)
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
-INSERT INTO `bookorder` (`Order_Number`, `Cus_ID`, `Mailing_Address`, `Credit_Card_Number`, `Shipment_Method`, `Shipping_Date`, `Date_and_Time_of_Order`, `ISBN`, `Price`, `Purchase_Price`, `Quantity_Purchased`, `Shipping_Cost`, `Tax`) 
-VALUES (1, 1, 'John@gmail.com', '1111222233334444', 'ground', '2022-01-01', '2022-01-01 11:22:33', '1234567891234', 100, 120, 1, 30,5),
-(2, 2, 'Marc@gmail.com', '2222333344445555', 'ground', '2022-05-02', '2022-05-02 16:01:50', '5378295647392', 90, 110, 1, 30,5),
-(3, 2, 'William@gmail.com', '2222333344445555', 'ground', '2022-04-26', '2022-04-26 21:42:05', '7264820174832', 80, 100, 1, 30,4);
+INSERT INTO `bookorder` (`Cus_ID`, `Mailing_Address`, `Credit_Card_Number`, `Shipment_Method`, `Shipping_Date`, `Date_and_Time_of_Order`, `ISBN`, `Price`, `Purchase_Price`, `Quantity_Purchased`, `Shipping_Cost`, `Tax`) 
+VALUES (1, 'John@gmail.com', '1111222233334444', 'ground', '2022-01-01', '2022-01-01 11:22:33', '1234567891234', 100, 120, 1, 30,5),
+(2, 'Marc@gmail.com', '2222333344445555', 'ground', '2022-05-02', '2022-05-02 16:01:50', '5378295647392', 90, 110, 1, 30,5),
+(2, 'William@gmail.com', '2222333344445555', 'ground', '2022-04-26', '2022-04-26 21:42:05', '7264820174832', 80, 100, 1, 30,4);
 
 
 -- Create customer table
@@ -115,7 +114,7 @@ CREATE TABLE author(
 -- Create database users
 CREATE USER 
     'read_data'@'%' IDENTIFIED WITH mysql_native_password BY 'password',
-    'crud'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password',
+    'crud'@'%' IDENTIFIED WITH mysql_native_password BY 'password',
     'super'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password',
     'account'@'%' IDENTIFIED WITH mysql_native_password BY 'password'
 	WITH MAX_QUERIES_PER_HOUR 60 MAX_UPDATES_PER_HOUR 60 PASSWORD HISTORY 5
@@ -125,6 +124,6 @@ CREATE USER
 grant all privileges on *.* to 'super'@'localhost' with grant option;
 grant SELECT on myDb.* to 'read_data'@'%';
 grant select,insert on myDb.users to 'account'@'%';
-grant select, insert, update, delete on myDb.* to 'crud'@'localhost';
+grant select, insert, update, delete on myDb.* to 'crud'@'%';
 
 DROP USER 'root'@'localhost';

@@ -6,28 +6,22 @@
    <body>
       
          <h1>Add Data into the table</h1>
-         <form action="insert.php" method="post">
-             
-            <p>
-               <label for="OrderNumber">Order Number:</label>
-               <input type="text" name="Order_Number" id="OrderNumber">
-            </p> 
-             
+         <form action="insertTodb.php" method="post">
             <p>
                <label for="CusID">Cus ID:</label>
                <input type="text" name="Cus_ID" id="CusID">
             </p> 
-             
+            
             <p>
                <label for="MailingAddress">Mailing Address:</label>
                <input type="email" name="Mailing_Address" id="MailingAddress">
             </p>
-              
+            
             <p>
                <label for="CreditCardNumber">Credit Card Number:</label>
                <input type="text" name="Credit_Card_Number" id="CreditCardNumber">
             </p>
-              
+            
             <p>
                <label for="ShipmentMethod">Shipment Method:</label>
                <input type="text" name="Shipment_Method" id="ShipmentMethod">
@@ -72,7 +66,7 @@
                <label for="Tax">Tax:</label>
                <input type="text" name="Tax" id="Tax">
             </p>
- 
+
             <input type="reset">
 
             <input type="submit" value="Submit">

@@ -114,10 +114,6 @@ CREATE USER
 	WITH MAX_QUERIES_PER_HOUR 60 MAX_UPDATES_PER_HOUR 60 PASSWORD HISTORY 5
     password expire interval 30 day password reuse interval 180 day;
 	
-	
-	-- PREQUIRE X509 WITH MAX_QUERIES_PER_HOUR 60
-	
-	-- PASSWORD HISTORY 5
 
 grant all privileges on *.* to 'super'@'localhost' with grant option;
 grant SELECT on myDb.* to 'read_data'@'%';

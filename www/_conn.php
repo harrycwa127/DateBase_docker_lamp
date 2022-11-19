@@ -3,8 +3,8 @@
 // connect to database config
 $dbhost    = 'db';
 $dbname    = 'myDb';
-$dbuser    = 'root';
-$dbpassword  = 'test';
+$dbuser    = 'read_data';
+$dbpassword  = 'password';
 
 try {
     $conn = mysqli_connect($dbhost,$dbuser,$dbpassword,$dbname);

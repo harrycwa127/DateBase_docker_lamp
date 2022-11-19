@@ -31,7 +31,8 @@ if (array_key_exists('is_logged', $_SESSION) === FALSE) {
         <?php echo "<h1>Bookorder</h1>"; ?>
         <?php
         require_once '_route.php';
-        $query = 'SELECT * From bookorder';
+        // get column except Credit_Card_Number
+        $query = 'SELECT Order_Number, Cus_ID, Mailing_Address, Shipment_Method, Shipping_Date, Date_and_Time_of_Order, ISBN, Price, Purchase_Price, Quantity_Purchased, Shipping_Cost, Tax From bookorder';
         $result = mysqli_query($conn, $query);
 
         echo '<table class="table table-striped">';
@@ -40,8 +41,6 @@ if (array_key_exists('is_logged', $_SESSION) === FALSE) {
             echo '<tr>';
             echo '<td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>';
 
-            // unset credit_card information
-            unset($value[3]);
             foreach ($value as $element) {
                 echo '<td>' . $element . '</td>';
             }

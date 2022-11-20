@@ -99,5 +99,7 @@
     // mysqli_close($crud_conn);
     ?>
 </body>
-
+    
+    <h1><a href="insert.php">Click me to insert next bookorder</a></h1>
+    
 </html>

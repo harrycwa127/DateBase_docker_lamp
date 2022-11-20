@@ -33,3 +33,7 @@ Open the phpmyadmin at http://localhost:8000
 ## Check website
 ---------------------------------------------------------------
 Open website(index.php) at http://localhost:8001
+
+## Demonstrate
+----------------------------------------------------------------
+https://drive.google.com/file/d/1PtLJ9y6AaqklMGt8GIHaDwj0vurJWBdM/view?usp=sharing

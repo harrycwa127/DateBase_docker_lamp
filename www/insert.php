@@ -32,7 +32,7 @@
 
          <tr>
             <td><label for="ShippingDate">Shipping Date:</label></td>
-            <td><input type="text" name="Shipping_Date" id="ShippingDate"></td>
+            <td><input type="text" name="Shipping_Date" id="ShippingDate" placeholder="yyyy-mm-dd"></td>
          </tr>
 
          <tr>

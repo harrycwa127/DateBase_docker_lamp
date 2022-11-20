@@ -43,7 +43,7 @@ CREATE TABLE bookorder(
     Quantity_Purchased INT,
     Shipping_Cost DECIMAL(7, 2),
     Tax DECIMAL(7, 2),
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 INSERT INTO `bookorder` (`user_id`, `Mailing_Address`, `Credit_Card_Number`, `Shipment_Method`, `Shipping_Date`, `Date_and_Time_of_Order`, `ISBN`, `Price`, `Purchase_Price`, `Quantity_Purchased`, `Shipping_Cost`, `Tax`) 

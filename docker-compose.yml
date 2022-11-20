@@ -1,5 +1,24 @@
 version: "3.1"
 services:
+    #Database Activity Monitoring (DAM)
+    st-agent:
+        image: sematext/agent:latest
+        privileged: true
+        environment:
+        - INFRA_TOKEN=77696151-0f31-4460-8e2b-3db86339a153
+        - REGION=EU
+        cap_add:
+        - SYS_ADMIN
+        restart: always
+        volumes:
+        - /:/hostfs:ro
+        - /etc/passwd:/etc/passwd:ro
+        - /etc/group:/etc/group:ro
+        - /var/run/:/var/run
+        - /sys/kernel/debug:/sys/kernel/debug
+        - /sys:/host/sys:ro
+        - /dev:/hostfs/dev:ro
+        - /var/run/docker.sock:/var/run/docker.sock:ro
     www:
         build: .
         container_name: www
@@ -17,7 +36,9 @@ services:
             MYSQL_ROOT_PASSWORD: test 
             MYSQL_DATABASE: myDb
             MYSQL_USER: user
-            MYSQL_PASSWORD: test
+            MYSQL_PASSWORD: test     
+            ST_MONITOR_MYSQL_DB_USER: "spm-user" # For Database Activity Monitoring
+            ST_MONITOR_MYSQL_DB_PASSWORD: "spm-password" # FOR Database Activity Monitoring 
         ports: 
             - "33306:3306"        
         volumes:

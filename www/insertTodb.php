@@ -43,7 +43,7 @@
     // $Shipping_Cost = $_REQUEST['Shipping_Cost'];
     // $Tax = $_REQUEST['Tax'];
 
-    $Cus_ID = trim(filter_input(INPUT_POST, 'Cus_ID', FILTER_SANITIZE_STRING));
+    $user_id = trim(filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_STRING));
     $Mailing_Address = trim(filter_input(INPUT_POST, 'Mailing_Address', FILTER_SANITIZE_STRING));
     $Credit_Card_Number = trim(filter_input(INPUT_POST, 'Credit_Card_Number', FILTER_SANITIZE_STRING));
     $Shipment_Method = trim(filter_input(INPUT_POST, 'Shipment_Method', FILTER_SANITIZE_STRING));
@@ -67,9 +67,9 @@
     //     '$Date_and_Time_of_Order','$ISBN','$Price','$Purchase_Price','$Quantity_Purchased','$Shipping_Cost','$Tax')";
 
     //Performing insert query execution
-    $sql = "INSERT INTO `bookorder` (`Cus_ID`, `Mailing_Address`, `Credit_Card_Number`, `Shipment_Method`, `Shipping_Date`, 
+    $sql = "INSERT INTO `bookorder` (`user_id`, `Mailing_Address`, `Credit_Card_Number`, `Shipment_Method`, `Shipping_Date`, 
     `Date_and_Time_of_Order`, `ISBN`, `Price`, `Purchase_Price`, `Quantity_Purchased`, `Shipping_Cost`, `Tax`) 
-    VALUES ('$Cus_ID','$Mailing_Address','$Credit_Card_Number','$Shipment_Method','$Shipping_Date',
+    VALUES ('$user_id','$Mailing_Address','$Credit_Card_Number','$Shipment_Method','$Shipping_Date',
             '$Date_and_Time_of_Order','$ISBN','$Price','$Purchase_Price','$Quantity_Purchased','$Shipping_Cost','$Tax')";
 
     try {
@@ -88,7 +88,7 @@
         . " Please browse your localhost php my admin"
         . " to view the updated data</h3>";
 
-    echo nl2br("\n$Order_Number\n$Cus_ID\n$Mailing_Address\n$Credit_Card_Number\n$Shipment_Method\n$Shipping_Date\n
+    echo nl2br("\n$Order_Number\n$user_id\n$Mailing_Address\n$Credit_Card_Number\n$Shipment_Method\n$Shipping_Date\n
             $Date_and_Time_of_Order\n$ISBN\n$Price\n$Purchase_Price\n$Quantity_Purchased\n$Shipping_Cost\n$Tax");
     // } else {
     //     _log_error ("ERROR: Hush! Sorry $sql. "

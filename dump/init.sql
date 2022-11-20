@@ -31,7 +31,7 @@ INSERT INTO `users` (`user_id`, `user_name`,`user_password`) VALUES
 	
 CREATE TABLE bookorder(
     Order_Number INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    Cus_ID INT,
+    user_id INT,
     Mailing_Address VARCHAR(500),
     Credit_Card_Number VARCHAR(16),
     Shipment_Method VARCHAR(50),
@@ -45,7 +45,7 @@ CREATE TABLE bookorder(
     Tax DECIMAL(7, 2)
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
-INSERT INTO `bookorder` (`Cus_ID`, `Mailing_Address`, `Credit_Card_Number`, `Shipment_Method`, `Shipping_Date`, `Date_and_Time_of_Order`, `ISBN`, `Price`, `Purchase_Price`, `Quantity_Purchased`, `Shipping_Cost`, `Tax`) 
+INSERT INTO `bookorder` (`user_id`, `Mailing_Address`, `Credit_Card_Number`, `Shipment_Method`, `Shipping_Date`, `Date_and_Time_of_Order`, `ISBN`, `Price`, `Purchase_Price`, `Quantity_Purchased`, `Shipping_Cost`, `Tax`) 
 VALUES (1, 'John@gmail.com', '1111222233334444', 'ground', '2022-01-01', '2022-01-01 11:22:33', '1234567891234', 100, 120, 1, 30,5),
 (2, 'Marc@gmail.com', '2222333344445555', 'ground', '2022-05-02', '2022-05-02 16:01:50', '5378295647392', 90, 110, 1, 30,5),
 (2, 'William@gmail.com', '2222333344445555', 'ground', '2022-04-26', '2022-04-26 21:42:05', '7264820174832', 80, 100, 1, 30,4);
@@ -53,7 +53,7 @@ VALUES (1, 'John@gmail.com', '1111222233334444', 'ground', '2022-01-01', '2022-0
 
 -- Create customer table
 CREATE TABLE customer(
-    Cus_ID INT NOT NULL,
+    user_id INT NOT NULL,
     Fname VARCHAR(50),
     MI VARCHAR(50),
     Lname VARCHAR(50),
@@ -63,11 +63,11 @@ CREATE TABLE customer(
     PhoneNumber VARCHAR(20),
     E_mail VARCHAR(50),
     -- user_id INT,
-    FOREIGN KEY (Cus_ID) REFERENCES users(user_id),
-    PRIMARY KEY(Cus_ID)
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    PRIMARY KEY(user_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
-INSERT INTO `customer` (`Cus_ID`, `Fname`, `MI`, `Lname`, `Address`, `Credit_Card_Number`, `Expiration_Date`, `PhoneNumber`, `E_mail`) VALUES
+INSERT INTO `customer` (`user_id`, `Fname`, `MI`, `Lname`, `Address`, `Credit_Card_Number`, `Expiration_Date`, `PhoneNumber`, `E_mail`) VALUES
 (1, "Jerry", "", "Ng", "Toilet", "1111222233334444", "2022-11-30", "12345678", "jerry@12345.com"),
 (2, "Kian", "", "Chan", "Home", "2222333344445555", "2022-11-30", "12345678", "kian@12345.com");
 
@@ -127,3 +127,6 @@ grant select,insert on myDb.users to 'account'@'%';
 grant select, insert, update, delete on myDb.* to 'crud'@'%';
 
 DROP USER 'root'@'localhost';
+
+-- Create user FOR sematext (Database Activity Monitoring (DAM) tool)
+CREATE USER 'spm-user'@'%' IDENTIFIED BY 'spm-password';

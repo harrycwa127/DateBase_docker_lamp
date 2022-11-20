@@ -11,8 +11,8 @@
    <form action="insertTodb.php" method="post">
       <table border="0">
          <tr>
-            <td><label for="CusID">Cus ID:</label></td>
-            <td><input type="text" name="Cus_ID" id="CusID"></td>
+            <td><label for="userid">user id:</label></td>
+            <td><input type="text" name="user_id" id="userid"></td>
          </tr>
 
          <tr>

@@ -31,7 +31,7 @@ INSERT INTO `users` (`user_id`, `user_name`,`user_password`) VALUES
 	
 CREATE TABLE bookorder(
     Order_Number INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
+    user_id INT NOT NULL,
     Mailing_Address VARCHAR(500),
     Credit_Card_Number VARCHAR(16),
     Shipment_Method VARCHAR(50),

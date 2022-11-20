@@ -1,9 +1,15 @@
+<?php
+require_once '_reCAPTCHA.php';
+?>
+<script type="text/javascript" src='https://www.google.com/recaptcha/api.js'></script>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
    <title>Add Data</title>
 </head>
+
+
 
 <body>
 
@@ -70,8 +76,18 @@
             <td><input type="text" name="Tax" id="Tax"></td>
          </tr>
       </table>
+      <div class="g-recaptcha" data-sitekey="6LeHnAwjAAAAAOfDR6yzz6VoLnPeOTnx4jQWZzpn"></div>
       <input type="reset">
       <input type="submit" value="Submit">
+      <?php
+      //If not submit
+      if ($_POST && isset($_POST['submit'])) {
+         //If do not complete recaptcha
+         if (!(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response']))) {
+            echo "<h1>Please complete recaptcha</h1>";
+         }
+      }
+      ?>
    </form>
 </body>
 

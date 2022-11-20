@@ -40,7 +40,7 @@ if (array_key_exists('is_logged', $_SESSION) === FALSE) {
         
         echo '<table class="table table-striped">';
         echo '<thead><tr><th></th><th>Order Number</th><th>Customer ID</th><th>Mail Address</th><th>Shipment Method</th><th>Shipping Date</th><th>Date and Time of Order</th><th>ISBN</th><th>Price</th><th>Purchase Price</th><th>Quantity Purchased</th><th>Shipping Cost</th><th>Tax</th></tr></thead>';
-        if($query){
+        if($query->rowCount() > 0){
             while($row = $query->fetch()) {
                 echo '<tr>';
                 echo '<td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>';

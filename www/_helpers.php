@@ -17,6 +17,7 @@ if (!function_exists('_log_error')) {
     }
 }
 
+//password hashing function
 if (!function_exists('_password_hash')) {
     function _password_hash($password){
         return password_hash($password, PASSWORD_BCRYPT);   #hash('sha256',$password);

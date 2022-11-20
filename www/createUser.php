@@ -63,8 +63,10 @@ if ($_POST && isset($_POST['submit'])) {
             $stmt->closeCursor();
         } catch (PDOException $e) {
             $stmt->closeCursor();
+            echo "Database insert query failed";
             error_log('Database insert query failed: ' . $e->getMessage());
         } catch (Exception $e) {
+            echo "Error";
             error_log('Error: ' . $e->getMessage());
         }
         echo "<h1>Registered Account!</h1>";

@@ -34,6 +34,10 @@ Open the phpmyadmin at http://localhost:8000
 ---------------------------------------------------------------
 Open website(index.php) at http://localhost:8001
 
-## Demonstrate
-----------------------------------------------------------------
+## Demo Video
+---------------------------------------------------------------
+Google drive:
 https://drive.google.com/file/d/1PtLJ9y6AaqklMGt8GIHaDwj0vurJWBdM/view?usp=sharing
+Synology(back up):
+https://hkhugo.quickconnect.to/vs/sharing/sI9z0n9c#!bW92aWUtMjAzOQ==
+

@@ -23,8 +23,8 @@ if ($_POST && isset($_POST['submit'])) {
         }
 
         if (_is_valid($password) === FALSE){
-            echo "Username is empty. Please <a href='login.php'>login again</a>.";
-            _log_error('Username is empty. Please.');
+            echo "Password is empty. Please <a href='login.php'>login again</a>.";
+            _log_error('Password is empty. Please.');
         }
 
         //Check username and password
@@ -51,7 +51,6 @@ if ($_POST && isset($_POST['submit'])) {
         $_SESSION['is_logged'] = TRUE;
         $_SESSION['userid']  = $row['user_id'];
         $_SESSION['username']  = $username;
-
         // redirect to index
         header('Location: index.php');
         exit;

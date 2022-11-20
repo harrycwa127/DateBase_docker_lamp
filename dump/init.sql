@@ -21,8 +21,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`user_id`, `user_name`,`user_password`) VALUES
 (1,'test','$2y$10$9phx9WxnXL2yDJ.Z5Ygaze5a9AiVSu1blMy/kBbh2og.1Z/rNCYx.'),
-(2,'User1','$2y$10$PARfzpp1B5HFPvC2gsr8cuIwTfZi6xuAEXTiJPHv7I2mqe0D1QhOe');
-
+(2,'User1','$2y$10$S4G0kdb/y4BJ4pHIGNvAp.xI/Nz05EcyW2ykZHQoGaqx4GmEUi8Ci');
 
 
 -- Sample table and data

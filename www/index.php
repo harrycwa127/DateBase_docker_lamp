@@ -43,7 +43,8 @@ if (array_key_exists('is_logged', $_SESSION) === FALSE) {
         if($query->rowCount() > 0){
             while($row = $query->fetch()) {
                 echo '<tr>';
-                echo '<td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>';
+                // echo '<td><a href="#"><span class="glyphicon glyphicon-search"></span></a></td>';
+                echo '<td></td>';
                 
                 foreach ($row as $key => $value) {
                     echo '<td>' . $value . '</td>';

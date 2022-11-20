@@ -36,7 +36,7 @@ if ($_POST && isset($_POST['submit'])) {
         $stmt->closeCursor();
 
         if (password_verify($password, $row['user_password']) === FALSE)
-            _log_error('Incorrect username or password. Please login again.');
+            _log_error('Incorrect username or password. Please <a href="login.php">login again</a>.');
 
         //Put the data to cookie when login success
         $_SESSION['is_logged'] = TRUE;

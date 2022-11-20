@@ -33,17 +33,8 @@ if (array_key_exists('is_logged', $_SESSION) === FALSE) {
         require_once '_route.php';
         // get column except Credit_Card_Number
 
-        $read_dbhost    = 'db';
-        $read_dbname    = 'myDb';
-        $read_dbuser    = 'read_data';
-        $read_dbpassword  = 'password';
-
-        $read_db = new PDO(
-            "mysql:host={$read_dbhost};dbname={$read_dbname};",
-            $read_dbuser, $read_dbpassword);
-        $read_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $query = $read_db->prepare('SELECT Order_Number, Cus_ID, Mailing_Address, Shipment_Method, Shipping_Date, Date_and_Time_of_Order, ISBN, Price, Purchase_Price, Quantity_Purchased, Shipping_Cost, Tax From bookorder WHERE Cus_ID = :Cus_ID');
+        $query = 'SELECT Order_Number, Cus_ID, Mailing_Address, Shipment_Method, Shipping_Date, Date_and_Time_of_Order, ISBN, Price, Purchase_Price, Quantity_Purchased, Shipping_Cost, Tax From bookorder WHERE Cus_ID = :Cus_ID';
+        $query = $read_db->prepare($query);
         $query->execute([':Cus_ID' => $_SESSION['userid']] );
         $query->setFetchMode(PDO::FETCH_ASSOC);
         

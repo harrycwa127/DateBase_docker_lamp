@@ -13,7 +13,7 @@ if (!function_exists('_is_valid')) {
 if (!function_exists('_log_error')) {
     function _log_error($msg){
         error_log($msg);
-        die($msg);
+        exit();
     }
 }
 

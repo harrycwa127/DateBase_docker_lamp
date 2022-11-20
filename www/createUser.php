@@ -18,9 +18,11 @@ if ($_POST && isset($_POST['submit'])) {
         $passconf = trim(filter_input(INPUT_POST, 'passconf', FILTER_SANITIZE_STRING));
 
         //Missing required fields
-        if (_is_valid($username) === FALSE || _is_valid($password) === FALSE || _is_valid($passconf) === FALSE)
-            _log_error("Missing required fields
-                <p><a href='createUser.php'>Return to create user</a></p>");
+        if (_is_valid($username) === FALSE || _is_valid($password) === FALSE || _is_valid($passconf) === FALSE) {
+            echo "Missing required fields
+                <p><a href='createUser.php'>Return to create user</a></p>";
+            _log_error("Missing required fields");
+        }
 
         // Validate password strength and rule
         $upper = preg_match('@[A-Z]@', $password);
@@ -29,12 +31,15 @@ if ($_POST && isset($_POST['submit'])) {
         $specialChars = preg_match('@[^\w]@', $password);
 
         if (!$upper || !$lower || !$number || !$specialChars || strlen($password) < 8) {
-            _log_error("The passwords should be at least 8 characters in length and one upper case letter, one number, and one special character.
-            <p><a href='createUser.php'>Return to create user</a></p>");
+            echo "The passwords should be at least 8 characters in length and one upper case letter, one number, and one special character.
+            <p><a href='createUser.php'>Return to create user</a></p>";
+            _log_error("The passwords should be at least 8 characters in length and one upper case letter, one number, and one special character.");
         }
 
         //Passwords did not match
         if ($password != $passconf) {
+            echo
+            "The passwords is not the same.<p><a href='createUser.php'>Return to create user</a></p>";
             _log_error('The passwords is not the same.');
         }
 
@@ -47,7 +52,8 @@ if ($_POST && isset($_POST['submit'])) {
 
         //if same username found 
         if ($num > 0) {
-            _log_error("Sorry, the username '{$username}' is already in use. <a href='createUser.php'>Go back</a>.</p>");
+            echo "Sorry, the username '{$username}' is already in use. <a href='createUser.php'>Go back</a>.</p>";
+            _log_error("Sorry, the username '{$username}' is already in use.");
         }
 
         //insert to db

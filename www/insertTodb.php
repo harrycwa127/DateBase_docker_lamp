@@ -78,8 +78,10 @@
         $stmt->closeCursor();
     } catch (PDOException $e) {
         $stmt->closeCursor();
+        echo "Database insert query failed";
         _log_error('Database insert query failed: ' . $e->getMessage());
     } catch (Exception $e) {
+        echo "Error";
         _log_error('Error: ' . $e->getMessage());
     }
 
